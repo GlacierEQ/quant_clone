@@ -34,7 +34,7 @@ def ignore_tensor(tensor: ReaderTensor):
     if not tensor.name.endswith("weight"):
         return True
     # quantize &= (ggml_n_dims(tensor) >= 2);
-    if len(tensor.shape) >= 3:  # is this right?
+    if len(tensor.shape) < 2:
         return True
     if any(s in tensor.name for s in IGNORE):
         return True
